@@ -104,7 +104,7 @@ const EditableTable: React.FC = () => {
               <Plus className="h-4 w-4" />
               Agregar Fila
             </Button>
-            <Button variant="secondary" onClick={handleSave} className="gap-2">
+            <Button variant="default" onClick={handleSave} className="gap-2">
               <Save className="h-4 w-4" />
               Guardar
             </Button>

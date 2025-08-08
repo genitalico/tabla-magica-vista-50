@@ -100,9 +100,11 @@ const DataImport: React.FC<Props> = ({ onImport }) => {
             className="hidden"
             onChange={(e) => onFiles(e.target.files)}
           />
-          <p className="text-xs text-muted-foreground mt-4">
-            columnas: cuenta_cargo|importe|nombre/razon_social_destinatario|cuenta_destinatario|divisa|referncia_numerica|alias|concepto_referencia|iva|rfc_destinatario|tipo
-          </p>
+          <div className="w-full overflow-x-auto mt-4">
+            <code className="text-xs text-muted-foreground whitespace-pre break-words">
+              columnas: cuenta_cargo|importe|nombre/razon_social_destinatario|cuenta_destinatario|divisa|referncia_numerica|alias|concepto_referencia|iva|rfc_destinatario|tipo
+            </code>
+          </div>
         </div>
       </CardContent>
     </Card>
