@@ -5,21 +5,11 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Plus, Trash2, Save, Download, Upload } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import PublicKeyUploader from '@/components/PublicKeyUploader';
+import DataImport from '@/components/DataImport';
+import type { TransactionRow } from '@/types/transactions';
 
-export interface TransactionRow {
-  id: string;
-  cuenta_cargo: string;
-  importe: number;
-  nombre_razon_social_destinatario: string;
-  cuenta_destinatario: string;
-  divisa: string;
-  referencia_numerica: string;
-  alias: string;
-  concepto_referencia: string;
-  iva: number;
-  rfc_destinatario: string;
-  tipo: string;
-}
+// moved TransactionRow type to '@/types/transactions'
 
 const CURRENCIES = ['MXN', 'USD', 'EUR', 'CAD'];
 const TRANSACTION_TYPES = ['Transferencia', 'Pago', 'Depósito', 'Retiro'];
@@ -89,6 +79,14 @@ const EditableTable: React.FC = () => {
     });
   };
 
+  const handleImportRows = (imported: TransactionRow[]) => {
+    setRows(imported);
+    toast({
+      title: "Datos cargados",
+      description: `${imported.length} transacciones importadas.`,
+    });
+  };
+
   return (
     <div className="w-full max-w-7xl mx-auto p-6 space-y-6">
       <Card>
@@ -114,6 +112,11 @@ const EditableTable: React.FC = () => {
               <Download className="h-4 w-4" />
               Exportar
             </Button>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2 mb-6">
+            <PublicKeyUploader />
+            <DataImport onImport={handleImportRows} />
           </div>
 
           <div className="border rounded-lg overflow-hidden">
