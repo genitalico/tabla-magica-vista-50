@@ -99,6 +99,13 @@ const EditableTable: React.FC = () => {
           </CardDescription>
         </CardHeader>
         <CardContent>
+          {/* botones movidos encima de la tabla */}
+
+          <div className="grid gap-4 md:grid-cols-2 mb-4">
+            <PublicKeyUploader />
+            <DataImport onImport={handleImportRows} />
+          </div>
+
           <div className="flex gap-3 mb-6">
             <Button onClick={addRow} className="gap-2">
               <Plus className="h-4 w-4" />
@@ -112,11 +119,6 @@ const EditableTable: React.FC = () => {
               <Download className="h-4 w-4" />
               Exportar
             </Button>
-          </div>
-
-          <div className="grid gap-4 md:grid-cols-2 mb-6">
-            <PublicKeyUploader />
-            <DataImport onImport={handleImportRows} />
           </div>
 
           <div className="border rounded-lg overflow-hidden">
